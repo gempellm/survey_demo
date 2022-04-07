@@ -31,7 +31,7 @@ eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0OTM2MzE4MSwiaWF0IjoxNjQ5MzI
 /survey/create - метод POST, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
-    "name": "Test Survey 1"<br />
+    "name": "Test Survey 3"<br />
 }<br />
 Где name - название опроса. Возвращает следующее:<br />
 Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'}<br />
