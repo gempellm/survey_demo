@@ -1,9 +1,6 @@
 package com.gempellm.survey.service;
 
-import com.gempellm.survey.models.Answer;
-import com.gempellm.survey.models.AnswerRequest;
-import com.gempellm.survey.models.Survey;
-import com.gempellm.survey.models.User;
+import com.gempellm.survey.models.*;
 import com.gempellm.survey.util.AccessTokenUtil;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpsServer;
@@ -102,6 +99,36 @@ public class AnswerService {
 
         if (answerOptional.isPresent()) {
             answer = answerOptional.get();
+        }
+
+        Optional<Question> questionOptional = questionRepository.findById(questionId);
+        if (questionOptional.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+        Question question = questionOptional.get();
+        String questionType = question.getType();
+        String answerContent = answerRequest.getAnswer();
+        if (questionType.equals("single")) {
+            if (answerContent.contains(",")) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+            String questionAnswers = question.getAnswers();
+            String[] possibleAnswers = questionAnswers.split(",");
+            if (!Arrays.asList(possibleAnswers).contains(answerContent)) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+        }
+
+        if (questionType.equals("multiple")) {
+            String[] userAnswers = answerContent.split(",");
+            String[] questionAnswers = question.getAnswers().split(",");
+            if (userAnswers.length > questionAnswers.length) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+
+            if (!Arrays.asList(questionAnswers).containsAll(Arrays.asList(userAnswers))) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
         }
 
         answer.setUserId(userId);
