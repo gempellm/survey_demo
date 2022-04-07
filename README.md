@@ -17,7 +17,7 @@
 
 # Описание API:
 
-/user/register - метод POST, доступен всем<br />
+## /user/register - метод POST, доступен всем<br />
 Принимает на вход json типа:<br />
 {<br />
     "login": "admin",<br />
@@ -27,7 +27,7 @@
 Возвращает "Successfully registered" в случае успешной регистрации, либо "Username already exists", если такой пользователь уже существует. <br />
 Пароли в базе данных хрантся в зашифрованном виде с использованием BCrypt. <br />
 
-/user/authenticate - метод POST, доступен всем<br />
+## /user/authenticate - метод POST, доступен всем<br />
 Принимает на вход json типа:<br />
 {<br />
     "login": "admin",<br />
@@ -38,7 +38,7 @@ Access токен возвращается следующего вида:<br />
 eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0OTM2MzE4MSwiaWF0IjoxNjQ5MzI3MTgxfQ.4ffUbdz3fv10dOxuLU8HRHCUezZhUfZbMmn87RCx8nU<br />
 Его нужно подставлять в заголовок "Authorization" при Http запросах на ограниченные по правам эндпоинты, подставлять в виде "Bearer token"<br />
 
-/survey/create - метод POST, доступен ADMIN<br />
+## /survey/create - метод POST, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "name": "Test Survey 3"<br />
@@ -46,7 +46,7 @@ eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0OTM2MzE4MSwiaWF0IjoxNjQ5MzI
 Где name - название опроса. Возвращает следующее:<br />
 Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'}<br />
 
-/survey/fetch - метод GET, доступен USER, ADMIN<br />
+## /survey/fetch - метод GET, доступен USER, ADMIN<br />
 Принимает на access токен в Authorization хедере.<br />
 Возвращает все опросы без фильтрации:<br />
 [<br />
@@ -73,7 +73,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     }<br />
 ]<br />
 
-/survey/fetch-active - метод GET, доступен USER, ADMIN<br />
+## /survey/fetch-active - метод GET, доступен USER, ADMIN<br />
 Принимает на access токен в Authorization хедере.<br />
 Возвращает только активные опросы:<br />
 [<br />
@@ -88,7 +88,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
 Активные опросы - это те, у которых задано начало, но не задан конец.<br />
 
 
-/survey/modify - метод PUT, доступен ADMIN<br />
+## /survey/modify - метод PUT, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "id": 17,<br />
@@ -104,7 +104,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     "description": "descripton"<br />
 }<br />
 
-/survey/start - метод PUT, доступен ADMIN<br />
+## /survey/start - метод PUT, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
   "id": 17<br />
@@ -112,7 +112,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
 Начинает опрос, делает его доступным для /survey/fetch-active, дата начала задается временем отправки запроса.<br />
 Задать повторную дату опроса, либо удалить значение невозможно.<br />
 
-/survey/end - метод PUT, доступен ADMIN<br />
+## /survey/end - метод PUT, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
   "id": 17<br />
@@ -127,7 +127,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     "description": "descripton"<br />
 }<br />
 
-/survey/delete - метод DELETE, доступен ADMIN<br />
+## /survey/delete - метод DELETE, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
   "id": 17<br />
@@ -150,7 +150,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     }<br />
 ]<br />
 
-/question/fetch - метод GET, доступен USER, ADMIN<br />
+## /question/fetch - метод GET, доступен USER, ADMIN<br />
 Принимает access токен в Authorization хедере.<br />
 Возвращает все вопросы:<br />
 [<br />
@@ -184,7 +184,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     }<br />
 ]<br />
 
-/question/fetch-by-id - метод POST, доступен USER, ADMIN<br />
+## /question/fetch-by-id - метод POST, доступен USER, ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
   "id": 8<br />
@@ -208,7 +208,7 @@ Survey{id=17, name='Test Survey 3', start='null', end='null', description='null'
     }<br />
 ]<br />
 
-/question/create - метод POST, доступен ADMIN<br />
+## /question/create - метод POST, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "id": 8,<br />
@@ -233,7 +233,7 @@ asnwers может быть пустым, если тип опроса - text, �
 Если вопрос выглядит как "multiple" "Хорошо,Плохо,Средне,Отлично", допустимыми ответами будет любая комбинация из этих слов через запятую, либо один вариант ответа.<br />
 Если вопрос выглядит как "text", допустим любой вид ответа.<br />
 
-/question/modify - метод PUT, доступен ADMIN<br />
+## /question/modify - метод PUT, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "id": 20,<br />
@@ -252,7 +252,7 @@ asnwers может быть пустым, если тип опроса - text, �
     "answers": "yellow,red,blue,white"<br />
 }<br />
 
-/question/delete - метод DELETE, доступен ADMIN<br />
+## /question/delete - метод DELETE, доступен ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "id": 20<br />
@@ -276,7 +276,7 @@ asnwers может быть пустым, если тип опроса - text, �
     }<br />
 ]<br />
 
-/answer/create - метод POST, доступен USER, ADMIN<br />
+## /answer/create - метод POST, доступен USER, ADMIN<br />
 Принимает на вход json типа, access токен в Authorization хедере:<br />
 {<br />
     "surveyId": 21,<br />
@@ -294,7 +294,7 @@ asnwers может быть пустым, если тип опроса - text, �
 }<br />
 Отправка повторного запроса к /answer/create с теми же id, но другим answer возможна, в таком случае ответ просто перезаписывается.
 
-/answer/complete - метод GET, доступен USER, ADMIN<br />
+## /answer/complete - метод GET, доступен USER, ADMIN<br />
 Принимает на вход access token в Authorization хедере.<br />
 Возвращает:<br />
 {<br />
