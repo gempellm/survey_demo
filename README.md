@@ -13,7 +13,10 @@
 3. Скачиваем и устаналиваем XAMPP (https://www.apachefriends.org/ru/index.html).
 4. Запускаем, заходим в админ-панель (Admin).
 5. Создаем БД survey_demo.
-6. Запускаем SurveyDemoApplication.
+6. Скачиваем и устанавливаем Postman (https://www.postman.com/downloads/).
+7. Запускаем, настраиваем запросы в соответствии с документацией.
+8. Запускаем SurveyDemoApplication.
+9. Через Postman отправляем запросы.
 
 # Описание API:
 
