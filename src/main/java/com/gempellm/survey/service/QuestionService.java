@@ -55,6 +55,9 @@ public class QuestionService {
         Question question = questionOptional.get();
         question.setText(questionRequest.getText());
         question.setType(questionRequest.getType());
+        if (questionRequest.getAnswers() != null) {
+            question.setAnswers(questionRequest.getAnswers());
+        }
         questionRepository.save(question);
         return question;
     }

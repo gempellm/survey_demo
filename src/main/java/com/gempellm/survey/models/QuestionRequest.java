@@ -12,13 +12,8 @@ public class QuestionRequest {
     public QuestionRequest() {
     }
 
-    public QuestionRequest(Long id, String text, String type) {
-        this.id = id;
-        this.text = text;
-        this.type = type;
-    }
 
-    public QuestionRequest(@NonNull Long id, String text, String type, String answers) {
+    public QuestionRequest(Long id, String text, String type, String answers) {
         this.id = id;
         this.text = text;
         this.type = type;
