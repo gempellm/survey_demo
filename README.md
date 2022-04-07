@@ -1,3 +1,11 @@
+# Стек технологий:
+1. Java 17.
+2. Spring Web, Data, Security.
+3. JDBC MySQL.
+4. Lombook.
+5. io.jsonwebtoken для создания JWT.
+6. com.google.code.gson для десериализации Json.
+
 # Инструкция по запуску:
 1. Клонируем репозиторий.
 2. В pom.xml -> пкм -> maven -> reload project.
@@ -6,7 +14,7 @@
 5. Создаем БД survey_demo.
 6. Запускаем SurveyDemoApplication.
 
-Описание API:
+# Описание API:
 
 /user/register - метод POST, доступен всем<br />
 Принимает на вход json типа:<br />
