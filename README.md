@@ -9,7 +9,7 @@
 
 # Инструкция по запуску:
 1. Клонируем репозиторий.
-2. В pom.xml -> пкм -> maven -> reload project.
+2. Для IntelliJ: pom.xml -> пкм -> maven -> reload project. Для остальных скачиваем пакеты через CMD.
 3. Скачиваем и устаналиваем XAMPP (https://www.apachefriends.org/ru/index.html).
 4. Запускаем, заходим в админ-панель (Admin).
 5. Создаем БД survey_demo.
