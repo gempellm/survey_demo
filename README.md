@@ -24,7 +24,8 @@
     "password": "admin",<br />
     "roles": "ROLE_USER,ROLE_ADMIN"<br />
 }<br />
-Возвращает "Successfully registered" в случае успешной регистрации, либо "Username already exists", если такой пользователь уже существует.
+Возвращает "Successfully registered" в случае успешной регистрации, либо "Username already exists", если такой пользователь уже существует. <br />
+Пароли в базе данных хрантся в зашифрованном виде с использованием BCrypt. <br />
 
 /user/authenticate - метод POST, доступен всем<br />
 Принимает на вход json типа:<br />
