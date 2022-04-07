@@ -1,10 +1,11 @@
 # Стек технологий:
 1. Java 17.
-2. Spring Web, Data, Security.
-3. JDBC MySQL.
-4. Lombook.
-5. io.jsonwebtoken для создания JWT.
-6. com.google.code.gson для десериализации Json.
+2. Maven.
+3. Spring Web, Data, Security.
+4. JDBC MySQL.
+5. Lombook.
+6. io.jsonwebtoken для создания JWT.
+7. com.google.code.gson для десериализации Json.
 
 # Инструкция по запуску:
 1. Клонируем репозиторий.
